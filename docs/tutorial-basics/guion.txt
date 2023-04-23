@@ -25,3 +25,21 @@
     - Importancia de Eloquent en el desarrollo de aplicaciones web con Laravel.
     - Referencia a documentación adicional.
 
+Aquí te dejo una lista de los métodos más importantes de Eloquent en orden alfabético:
+
+
+
+
+
+
+- `join()`: Realiza una unión con otra tabla.
+- `max()`: Obtiene el valor máximo de una columna numérica.
+- `min()`: Obtiene el valor mínimo de una columna numérica.
+- `orderBy()`: Ordena los registros por el valor de una columna.
+- `pluck()`: Obtiene un solo valor de una columna en lugar de todo el registro.
+- `select()`: Selecciona las columnas a recuperar de la tabla.
+- `sum()`: Obtiene la suma de una columna numérica.
+- `update()`: Actualiza uno o varios registros de la tabla.
+- `where()`: Agrega una cláusula WHERE a la consulta.
+
+Ten en cuenta que esta lista no es exhaustiva y que existen muchos otros métodos disponibles en Eloquent que pueden ser útiles dependiendo del caso de uso específico.

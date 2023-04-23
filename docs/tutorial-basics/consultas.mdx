@@ -50,3 +50,342 @@ El resultado de la consulta se almacena en la variable `$users`, que contendrá 
 
 En resumen, Eloquent proporciona un lenguaje fluido poderoso y fácil de usar para construir consultas complejas de manera legible y mantenible.
 
+## métodos
+
+Los métodos Eloquent son un conjunto de funciones
+ proporcionadas por el ORM de Laravel, Eloquent, para interactuar 
+ con la base de datos a través de modelos. Estos métodos permiten 
+ realizar diversas operaciones en la base de datos, como recuperar 
+ datos, insertar, actualizar y eliminar registros, establecer 
+ relaciones entre tablas, entre otras. Los métodos Eloquent son 
+ llamados directamente en los modelos y se encargan de generar las 
+ consultas SQL correspondientes y manejar los resultados devueltos. 
+ Son una de las características clave que hacen de Laravel y 
+ Eloquent una combinación tan poderosa para el desarrollo de 
+ aplicaciones web.
+
+ ### all
+
+El método `all` de Eloquent es utilizado para obtener todos los registros de una tabla en la base de datos. Este método devuelve una colección de objetos de modelo, que representan a cada registro en la tabla.
+
+El uso básico del método `all` es el siguiente:
+
+```
+$users = App\Models\User::all();
+```
+
+En este ejemplo, se obtienen todos los registros de la tabla `users` en la base de datos y se almacenan en la variable `$users`. Cada registro es representado por un objeto de modelo `User`.
+
+El método `all` también acepta una lista de columnas para seleccionar solamente aquellas columnas específicas de la tabla. Por ejemplo:
+
+```
+$users = App\Models\User::all(['id', 'name']);
+```
+
+En este ejemplo, se seleccionan solamente las columnas `id` y `name` de la tabla `users`.
+
+Cabe mencionar que el método `all` puede no ser adecuado para tablas con 
+grandes cantidades de registros, ya que puede consumir una gran cantidad 
+de recursos al cargar todos los registros en memoria. En estos casos, 
+es recomendable utilizar métodos que permitan la paginación o la 
+limitación de resultados, como `paginate` o `take`.
+
+### avg()
+
+El método `avg()` de Eloquent se utiliza para obtener el promedio de los valores de una columna específica en la tabla de la base de datos. Por ejemplo, si queremos obtener el promedio de la edad de todos los usuarios en una tabla de usuarios, podemos usar el método `avg()` de la siguiente manera:
+
+```php
+$averageAge = User::avg('age');
+```
+
+En este ejemplo, `User` es el modelo de Eloquent para la tabla de usuarios, y `age` es el nombre de la columna que contiene la edad de cada usuario. El método `avg()` devuelve un valor decimal que representa el promedio de la columna especificada. Si no hay registros en la tabla que coincidan con la consulta, el método devuelve `null`.
+
+También es posible utilizar el método `avg()` en combinación con el método `groupBy()` para obtener el promedio de una columna específica para cada grupo en la tabla. Por ejemplo, si queremos obtener el promedio de la edad de los usuarios para cada ciudad en la tabla de usuarios, podemos usar el siguiente código:
+
+```php
+$averageAgeByCity = User::groupBy('city')
+                        ->selectRaw('city, AVG(age) as average_age')
+                        ->get();
+```
+
+En este ejemplo, el método `groupBy()` agrupa los resultados por 
+la columna `city`, y el método `selectRaw()` se utiliza para seleccionar 
+la columna `city` y el promedio de la columna `age` para cada grupo. 
+El resultado es una colección de objetos que contienen el nombre de la 
+ciudad y el promedio de la edad de los usuarios en esa ciudad.
+
+### chunk
+
+El método `chunk` de Eloquent permite recuperar registros de la base de datos en lotes, en lugar de recuperar todos los registros de una vez. Esto es especialmente útil cuando se manejan grandes conjuntos de datos que pueden consumir mucha memoria.
+
+El método acepta dos argumentos: el tamaño del lote y una función de retorno de llamada que se ejecutará para cada lote de registros recuperados. La función de retorno de llamada recibe como argumento una instancia de colección que contiene los registros recuperados.
+
+Un ejemplo de uso del método `chunk` sería el siguiente:
+
+```php
+// Recuperar todos los usuarios en lotes de 100
+User::chunk(100, function ($users) {
+    foreach ($users as $user) {
+        // procesar cada usuario
+    }
+});
+```
+
+Este código recuperará los registros de la tabla `users` en lotes de 100 y
+ ejecutará la función de retorno de llamada para cada lote. 
+ La función de retorno de llamada recibirá una 
+colección que contiene hasta 100 registros.
+
+### count()
+
+El método `count()` de Eloquent permite contar la cantidad de registros que hay en una tabla de la base de datos que correspondan a las condiciones especificadas en la consulta.
+
+Se puede llamar al método sin ningún parámetro para obtener el total de registros de la tabla, o con uno o varios argumentos para obtener el total de registros que cumplan las condiciones especificadas.
+
+Por ejemplo, si queremos obtener el total de usuarios en una tabla llamada `users`, podemos usar el método de la siguiente manera:
+
+```php
+$totalUsers = User::count();
+```
+
+También podemos obtener el total de usuarios que cumplan ciertas condiciones, por ejemplo, que tengan el campo `status` igual a "activo":
+
+```php
+$totalActiveUsers = User::where('status', 'activo')->count();
+```
+
+Este método puede ser útil en diversas situaciones, 
+como para obtener estadísticas sobre la cantidad de registros que cumplen 
+ciertas condiciones, para realizar paginación, entre otros casos.
+
+### create
+
+El método `create` de Eloquent permite crear un nuevo registro en la base de datos a partir de un array asociativo de atributos. Es decir, podemos crear un nuevo modelo y persistirlo en la base de datos en una sola operación. La sintaxis básica es la siguiente:
+
+```php
+// Creamos un nuevo modelo
+$user = User::create([
+    'name' => 'John Doe',
+    'email' => 'johndoe@example.com',
+    'password' => bcrypt('secret'),
+]);
+```
+
+En este ejemplo, estamos creando un nuevo modelo de `User` y especificando los atributos que queremos asignarle mediante un array asociativo. Los nombres de las claves del array deben coincidir con los nombres de las columnas de la tabla en la base de datos.
+
+El método `create` también devuelve una instancia del modelo recién creado, lo que nos permite encadenar métodos adicionales si lo deseamos. Además, si existe una restricción de clave única en la tabla para algún campo incluido en el array de atributos, Laravel lanzará una excepción de tipo `Illuminate\Database\QueryException` si intentamos crear un registro que viole esa restricción.
+
+Es importante tener en cuenta que el método `create` no valida automáticamente los datos proporcionados. Si necesitamos validar los datos antes de crear el modelo, deberíamos utilizar el método `validate` del objeto `Illuminate\Validation\Validator` antes de llamar al método `create`.
+
+```php
+// Validamos los datos
+$validator = Validator::make($request->all(), [
+    'name' => 'required|string|max:255',
+    'email' => 'required|string|email|max:255|unique:users',
+    'password' => 'required|string|min:8|confirmed',
+]);
+
+if ($validator->fails()) {
+    return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+}
+
+// Creamos un nuevo modelo
+$user = User::create([
+    'name' => $request->input('name'),
+    'email' => $request->input('email'),
+    'password' => bcrypt($request->input('password')),
+]);
+``` 
+
+En este ejemplo, estamos utilizando el objeto `Validator` para validar 
+los datos del formulario antes de crear el modelo. Si la validación falla, 
+redirigimos al usuario de vuelta al formulario con los errores 
+correspondientes. Si la validación pasa, creamos un nuevo modelo de `User` 
+a partir de los datos proporcionados por el usuario.
+
+### delete
+
+El método `delete` de Eloquent se utiliza para eliminar un registro de la base de datos. Puede ser llamado en un modelo específico, lo que eliminará la fila correspondiente en la tabla de la base de datos.
+
+Por ejemplo, supongamos que tenemos un modelo `User` y queremos eliminar un usuario en particular con un ID de 1. Podemos hacerlo así:
+
+```
+$user = User::find(1);
+$user->delete();
+```
+
+También se puede llamar al método `delete` directamente en una consulta, lo que eliminará todas las filas que satisfagan los criterios de la consulta.
+
+```
+User::where('active', false)->delete();
+```
+
+Este ejemplo eliminará todas las filas de la tabla "users" donde el campo "active" es falso. Cabe destacar que este método elimina directamente las filas de la base de datos sin pasar por la papelera de reciclaje, 
+por lo que se debe tener cuidado al utilizarlo.
+
+### distinct 
+
+El método `distinct()` se utiliza para obtener un conjunto de resultados distintos y únicos de una columna específica en una consulta. Por defecto, las consultas de Eloquent devuelven todos los resultados que coinciden con los criterios de la consulta, lo que puede incluir filas duplicadas. Pero si se desea obtener solamente los valores únicos de una columna, se puede utilizar el método `distinct()`.
+
+Este método se puede encadenar después del método `select()` para indicar que se desea obtener valores únicos de la columna seleccionada. Por ejemplo:
+
+```php
+$uniqueResults = DB::table('users')->select('name')->distinct()->get();
+```
+
+Este código devuelve una colección de objetos de usuario, cada uno de los cuales tiene una propiedad `name`, pero sin duplicados.
+
+Cabe mencionar que el método `distinct()` no puede ser 
+utilizado junto con algunos métodos de agregación, como 
+`count()`, `max()`, `min()`, `avg()` y `sum()`. En tales casos, se puede 
+utilizar una subconsulta para obtener los resultados únicos de una columna 
+en lugar de usar el método `distinct()`.
+
+### find
+
+El método `find()` es utilizado para recuperar un solo modelo por su clave primaria. Toma como argumento la clave primaria del modelo que se desea recuperar y devuelve una instancia del modelo correspondiente. Si no se encuentra un modelo con la clave primaria especificada, se devuelve `null`. 
+
+Por ejemplo, para recuperar un registro de la tabla `users` por su clave primaria `id`:
+
+```php
+$user = User::find(1); // devuelve el usuario con ID 1 o null si no existe
+```
+
+También es posible pasar un array de claves primarias como argumento para recuperar varios modelos a la vez:
+
+```php
+$users = User::find([1, 2, 3]); // devuelve una colección de usuarios con IDs 1, 2 y 3
+```
+
+Es importante destacar que `find()` solo busca por clave primaria, 
+no se pueden utilizar otros campos de la tabla como criterios de búsqueda.
+
+### first
+
+El método `first()` es utilizado para obtener el primer registro que cumple con las condiciones especificadas en una consulta. Es similar al método `get()`, pero en lugar de devolver una colección de registros, devuelve solo el primer registro. 
+
+Por ejemplo, para obtener el primer usuario registrado en la base de datos, se puede utilizar el método `first()` de la siguiente manera:
+
+```php
+$user = User::first();
+```
+
+Si se quiere obtener el primer usuario que cumpla con ciertas condiciones, se puede encadenar el método `where()` a la consulta:
+
+```php
+$user = User::where('name', 'John')->first();
+```
+
+Este método es útil cuando se sabe que solo se necesita un registro específico y no es necesario recuperar todos los registros que 
+cumplen con las condiciones especificadas.
+
+### get 
+
+El método `get()` es utilizado para recuperar todos los registros de una tabla. Este método es utilizado para ejecutar una consulta y recuperar una colección de objetos `Illuminate\Database\Eloquent\Model`. 
+
+Por defecto, `get()` devuelve todos los registros de la tabla asociada al modelo. También se puede utilizar para obtener un conjunto de registros que coincidan con una condición específica pasada como argumento en el método `where()`. 
+
+Por ejemplo, si queremos obtener todos los usuarios que tengan un nombre específico "John", podemos hacer lo siguiente:
+
+```php
+$users = App\Models\User::where('name', 'John')->get();
+```
+
+Esto devolverá una colección de objetos `User` que coincidan con la condición especificada. También podemos encadenar múltiples condiciones en una consulta utilizando el lenguaje fluido:
+
+```php
+$users = App\Models\User::where('name', 'John')
+                ->where('email', 'like', '%example.com')
+                ->get();
+```
+
+Este ejemplo devolverá una colección de objetos `User` que tengan el nombre "John" y cuyo correo electrónico termine en "example.com". 
+
+Una vez que se ha recuperado la colección de objetos, 
+se puede iterar sobre ella y acceder a sus propiedades y métodos, 
+como cualquier otro objeto de Eloquent.
+
+### groupBy
+
+El método `groupBy` se utiliza para agrupar los resultados de la consulta por una columna determinada. Toma como argumento el nombre de la columna por la cual se desea agrupar los resultados.
+
+Por ejemplo, si deseamos agrupar los registros de una tabla `users` por su país de origen, podríamos utilizar el método `groupBy` de la siguiente manera:
+
+```
+$usersByCountry = DB::table('users')
+                    ->select('country', DB::raw('count(*) as total'))
+                    ->groupBy('country')
+                    ->get();
+```
+
+En este ejemplo, la consulta selecciona la columna `country` de la tabla `users`, junto con una columna calculada utilizando la función `count(*)` de SQL que cuenta el número total de registros agrupados por país. Luego, se llama al método `groupBy('country')` para agrupar los registros por país, y finalmente se obtienen los resultados con el método `get()`.
+
+El método `groupBy` también puede tomar múltiples 
+argumentos para agrupar los resultados por varias columnas.
+
+### has
+
+El método `has` se utiliza para verificar si una relación específica existe para un modelo. Por ejemplo, si tenemos un modelo de `Usuario` que tiene una relación de `Posts`, podemos verificar si un usuario tiene algún post utilizando el método `has`:
+
+```php
+$user = User::find(1);
+
+if ($user->has('posts')) {
+    // El usuario tiene al menos un post
+} else {
+    // El usuario no tiene ningún post
+}
+```
+
+También es posible agregar restricciones a la consulta de la relación. Por ejemplo, para verificar si un usuario tiene al menos un post publicado, se puede utilizar:
+
+```php
+$user = User::find(1);
+
+if ($user->has('posts', '>', 0)->where('publicado', true)->exists()) {
+    // El usuario tiene al menos un post publicado
+} else {
+    // El usuario no tiene ningún post publicado
+}
+```
+
+El método `has` también puede ser utilizado en una consulta, para filtrar los resultados basados en la existencia de una relación. Por ejemplo, para obtener todos los usuarios que tienen al menos un post publicado:
+
+```php
+$users = User::has('posts', '>', 0)->whereHas('posts', function ($query) {
+    $query->where('publicado', true);
+})->get();
+```
+
+En este ejemplo, utilizamos el método `whereHas` para agregar una restricción a la consulta de la relación. La consulta resultante incluirá únicamente 
+los usuarios que tengan al menos un post publicado.
+
+### join
+
+El método `join()` se utiliza para realizar una unión entre dos o más tablas en una consulta SQL. Permite especificar la relación entre las tablas mediante la cláusula `ON`. 
+
+El método acepta varios parámetros: 
+
+- La primera variable es la tabla a la que se va a unir.
+- La segunda variable es la columna de la tabla base que se va a utilizar para unir la tabla especificada.
+- La tercera variable es la columna de la tabla especificada que se va a utilizar para unir la tabla base.
+- El cuarto parámetro es un operador lógico como `AND` o `OR`.
+
+El método `join()` devuelve una instancia de la clase `Illuminate\Database\Query\Builder` que se puede utilizar para construir consultas más complejas. 
+
+Aquí hay un ejemplo de cómo utilizar el método `join()` para unir dos tablas:
+
+```
+$users = DB::table('users')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'orders.price')
+            ->get();
+```
+
+Este ejemplo une la tabla `users` con la tabla `orders` usando la columna `id` de la tabla `users` y la columna `user_id` de la tabla `orders`. La consulta devuelve todas las columnas de la tabla `users` y la columna `price` de la tabla `orders`.
+
+
+
+
