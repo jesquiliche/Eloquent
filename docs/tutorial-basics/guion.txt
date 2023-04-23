@@ -1,0 +1,27 @@
+¡Por supuesto! Aquí te presento un posible guión para desarrollar el tema "Cómo utilizar Eloquent en Laravel":
+
+1. Introducción
+    - Breve explicación de Eloquent como ORM incluido en Laravel.
+2. Configuración de la conexión a la base de datos
+    - Explicación de cómo configurar la conexión a la base de datos en Laravel.
+    - Cómo definir las conexiones disponibles y sus opciones.
+3. Modelos
+    - Qué son los modelos en Eloquent.
+    - Cómo se relacionan los modelos con las tablas de la base de datos.
+    - Cómo definir modelos en Laravel.
+    - Cómo extender la clase base `Illuminate\Database\Eloquent\Model`.
+4. Consultas
+    - Qué son las consultas en Eloquent.
+    - Cómo utilizar el lenguaje fluido para encadenar métodos y construir consultas complejas.
+    - Cómo utilizar métodos como `where`, `orderBy`, `join`, `groupBy`, `having`, etc.
+    - Ejemplos de consultas utilizando Eloquent.
+5. Relaciones
+    - Qué son las relaciones entre tablas de la base de datos.
+    - Cómo definir relaciones entre modelos utilizando métodos como `hasMany`, `belongsTo`, `hasOne`, `belongsToMany`, etc.
+    - Cómo acceder a los datos relacionados utilizando Eloquent.
+    - Ejemplos de relaciones entre modelos utilizando Eloquent.
+6. Conclusión
+    - Recapitulación de los conceptos aprendidos.
+    - Importancia de Eloquent en el desarrollo de aplicaciones web con Laravel.
+    - Referencia a documentación adicional.
+

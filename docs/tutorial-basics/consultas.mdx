@@ -1,0 +1,52 @@
+---
+sidebar_position: 6
+---
+
+# Consultas
+
+## ¿Qué son las consultas en Eloquent?
+
+Las consultas en Eloquent son una forma de interactuar con la base de datos mediante la recuperación, creación, actualización o eliminación de registros. Eloquent proporciona una serie de métodos y opciones para construir y ejecutar consultas de manera intuitiva y fácil de entender.
+
+Con Eloquent, las consultas se construyen a través de la creación de instancias de la clase `Illuminate\Database\Eloquent\Builder` y el uso de sus métodos. Los métodos de consulta de Eloquent se encargan de construir la consulta SQL adecuada según los parámetros proporcionados.
+
+Eloquent soporta una amplia variedad de operadores y cláusulas, como `where`, `orWhere`, `whereIn`, `whereBetween`, `orderBy`, `groupBy`, `having`, entre otros. Además, es posible crear consultas complejas con múltiples condiciones y subconsultas.
+
+Las consultas en Eloquent también soportan relaciones entre modelos, lo que permite obtener registros relacionados utilizando métodos como `with`, `has`, `whereHas`, entre otros.
+
+En resumen, las consultas en Eloquent son una forma poderosa y flexible de interactuar con la base de datos en Laravel, permitiendo realizar operaciones CRUD y trabajar con relaciones de manera intuitiva y eficiente.
+
+## Cómo utilizar Eloquent para encadenar métodos y construir consultas.
+
+En Eloquent, las consultas son utilizadas para recuperar datos de la base de datos. Una de las características más poderosas de Eloquent es su lenguaje fluido, que permite encadenar métodos para construir consultas complejas de forma muy legible y mantenible.
+
+Para construir una consulta en Eloquent, se empieza por llamar al método `DB::table` o al método estático `Model::query` del modelo en cuestión, dependiendo de si se quiere construir una consulta para una tabla en particular o para un modelo específico. A partir de ahí, se pueden encadenar una serie de métodos para construir la consulta deseada.
+
+Algunos ejemplos de métodos que se pueden utilizar para construir consultas en Eloquent son:
+
+- `select`: para seleccionar las columnas que se quieren recuperar.
+- `where`: para filtrar los resultados según una condición dada.
+- `orWhere`: para agregar una condición "o".
+- `whereIn` / `whereNotIn`: para filtrar según si el valor de una columna está en una lista de valores dada.
+- `orderBy`: para ordenar los resultados por una columna dada.
+- `groupBy`: para agrupar los resultados por una columna dada.
+- `join`: para realizar una unión con otra tabla.
+- `leftJoin`: para realizar una unión izquierda con otra tabla.
+- `count`, `max`, `min`, `sum`: para obtener valores agregados de una columna.
+
+Por ejemplo, para construir una consulta que seleccione los usuarios cuyo correo electrónico termine en "@gmail.com" y los ordene por orden alfabético, se puede utilizar el siguiente código:
+
+```php
+$users = DB::table('users')
+            ->select('name', 'email')
+            ->where('email', 'like', '%@gmail.com')
+            ->orderBy('name')
+            ->get();
+```
+
+Este código primero selecciona las columnas `name` y `email` de la tabla `users`, luego filtra los resultados para seleccionar solo aquellos donde la columna `email` termina en "@gmail.com", y finalmente los ordena por la columna `name`.
+
+El resultado de la consulta se almacena en la variable `$users`, que contendrá una colección de objetos que representan los resultados de la consulta.
+
+En resumen, Eloquent proporciona un lenguaje fluido poderoso y fácil de usar para construir consultas complejas de manera legible y mantenible.
+
