@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Introducción
+# Relaciones en Eloquent
 
 Bienvenida e introducción al ORM de Laravel, Eloquent.ç
 
