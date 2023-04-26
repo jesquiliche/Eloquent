@@ -10,16 +10,18 @@ const config = {
   tagline: 'Guía de referencia',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
+   // Set the production url of your site here
+   url: 'https://jesquiliche.github.io',
+   // Set the /<baseUrl>/ pathname under which your site is served
+   // For GitHub pages deployment, it is often '/<projectName>/'
+   baseUrl: '/eloquent-docs',
+ 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'jesquiliche', // Usually your GitHub org/user name.
+  projectName: 'eloquent-doc', // Usually your repo name.
+  deploymentBranch:'gh-pages',
+  trailingSlash:false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
