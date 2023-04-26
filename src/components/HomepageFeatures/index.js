@@ -1,25 +1,34 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from "react";
+import clsx from "clsx";
+import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: 'Aprende a utilizar este ORM ',
-    Svg: require('@site/static/img/laravel.png').default,
+    title: "Aprende a utilizar este ORM ",
+    Svg: require("@site/static/img/laravel.png").default,
     description: (
       <>
-      En este tutorial de Eloquent, aprenderás a utilizar uno de los ORM más populares de PHP para interactuar con tu base de datos. Desde la configuración inicial hasta la creación de consultas complejas, este tutorial cubre todo lo que necesitas saber para utilizar Eloquent en tu proyecto.
+        Este tutorial es una guía completa y sencilla para aprender a utilizar
+        Eloquent y las bases de datos de Laravel. A través de ejemplos
+        prácticos, aprenderás a diseñar y modelar tus bases de datos, a realizar
+        consultas avanzadas, y a optimizar el rendimiento de tu aplicación.
+        Descubrirás cómo utilizar las relaciones entre tablas para construir
+        modelos de datos complejos, cómo utilizar las migraciones para mantener
+        la integridad de tu base de datos, y cómo integrar Eloquent con otras
+        herramientas y librerías de Laravel. Con este tutorial, podrás llevar
+        tus habilidades de Eloquent al siguiente nivel, sin importar si eres un
+        desarrollador novato o experimentado. Aprenderás los trucos y técnicas
+        más avanzados para construir aplicaciones web con bases de datos
+        potentes y eficientes. ¡No esperes más para empezar a dominar Eloquent y
+        las bases de datos con Laravel!
       </>
     ),
   },
- 
-  
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx('col col--12')}>
-     
+    <div className={clsx("col col--12")}>
       <div className="text--center">
         <h3>{title}</h3>
         <p>{description}</p>

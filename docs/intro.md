@@ -8,13 +8,6 @@ sidebar_position: 1
 
 **Autor: Jesús Quintana Esquiliche**
 
-**Resumen:** Este tutorial es una guía completa y sencilla para aprender a utilizar Eloquent y las bases de datos de Laravel. A través de ejemplos prácticos, aprenderás a diseñar y modelar tus bases de datos, a realizar consultas avanzadas, y a optimizar el rendimiento de tu aplicación. Descubrirás cómo utilizar las relaciones entre tablas para construir modelos de datos complejos, cómo utilizar las migraciones para mantener la integridad de tu base de datos, y cómo integrar Eloquent con otras herramientas y librerías de Laravel.
-
-Con este tutorial, podrás llevar tus habilidades de Eloquent al siguiente nivel, sin importar si eres un desarrollador novato o experimentado. Aprenderás los trucos y técnicas más avanzados para construir aplicaciones web con bases de datos potentes y eficientes.
-
-¡No esperes más para empezar a dominar Eloquent y las bases de datos con Laravel!
-
-
 ## ¿Qué es un ORM y por qué es importante?
 
 Un ORM (Object-Relational Mapping) es una técnica de programación que permite a los desarrolladores interactuar con bases de datos relacionales utilizando objetos y métodos en lugar de escribir consultas SQL directamente. En lugar de interactuar con la base de datos a través de SQL, un ORM proporciona una capa de abstracción que se encarga de la comunicación con la base de datos en nombre del desarrollador.
