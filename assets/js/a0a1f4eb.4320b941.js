@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkeloquent=self.webpackChunkeloquent||[]).push([[8363],{5096:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/Eloquent/blog/tags/facebook","allTagsPath":"/Eloquent/blog/tags","count":1}')}}]);
