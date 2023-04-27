@@ -36,7 +36,6 @@ Además, Eloquent también es muy personalizable. Los desarrolladores pueden ext
 
 Otra razón por la que Eloquent es tan popular en Laravel es que es muy fácil de integrar con otras partes del framework. Por ejemplo, los desarrolladores pueden utilizar la integración de Eloquent con el sistema de autenticación de Laravel para manejar la autenticación y la autorización de los usuarios.
 
-En resumen, Eloquent es el ORM más popular en Laravel porque es fácil de usar y aprender, es potente y versátil, es personalizable y es fácil de integrar con otras partes del framework. Al utilizar Eloquent, los desarrolladores pueden interactuar con la base de datos de una manera mucho más fácil y eficiente, lo que reduce el tiempo de desarrollo y los errores.
 
 
 

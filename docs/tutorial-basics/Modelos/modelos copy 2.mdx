@@ -14,7 +14,7 @@ Además, los modelos permiten definir relaciones entre tablas, como una relació
 
 Otra ventaja de utilizar modelos es que Laravel proporciona muchas herramientas integradas para trabajar con ellos. Por ejemplo, puedes utilizar métodos como `all()`, `find()`, `create()` y `delete()` para realizar operaciones comunes en la base de datos con una sintaxis simple y legible. También puedes utilizar el motor de consultas de Laravel para crear consultas complejas utilizando una sintaxis similar a SQL pero más amigable para el lenguaje de programación orientado a objetos.
 
-En resumen, los modelos son una parte esencial de la arquitectura de Laravel y otros frameworks ORM. Proporcionan una capa de abstracción que simplifica la interacción con la base de datos y hace que el código sea más legible y fácil de mantener. Además, permiten definir relaciones entre tablas y proporcionan herramientas integradas para trabajar con ellos.
+Como conclusión, los modelos son una parte esencial de la arquitectura de Laravel y otros frameworks ORM. Proporcionan una capa de abstracción que simplifica la interacción con la base de datos y hace que el código sea más legible y fácil de mantener. Además, permiten definir relaciones entre tablas y proporcionan herramientas integradas para trabajar con ellos.
 
 En Laravel, los modelos se utilizan para representar una tabla de la base de datos. El nombre del modelo debe ser el mismo que el nombre de la tabla, pero en singular y en CamelCase. Por ejemplo, si tienes una tabla llamada "users", el modelo correspondiente se llamaría "User".
 
@@ -35,8 +35,7 @@ Laravel utiliza convenciones para relacionar los modelos con las tablas de la ba
 Una vez que se ha definido el modelo, puedes utilizar los métodos del modelo para interactuar con la tabla correspondiente en la base de datos. Por ejemplo, el método `all()` devuelve una colección de todos los registros de la tabla, el método `find()` busca un registro por su clave primaria, el método `create()` crea un nuevo registro y el método `update()` actualiza un registro existente.
 
 Además, puedes utilizar las relaciones en los modelos para definir relaciones entre las tablas. Por ejemplo, si tienes una tabla de usuarios y una tabla de publicaciones, puedes definir una relación en el modelo de usuarios que indica que un usuario tiene muchas publicaciones. Esto facilita el acceso a los datos relacionados y permite realizar consultas complejas con facilidad.
-
-En resumen, los modelos en Laravel se relacionan con las tablas de la base de datos de forma automática utilizando convenciones basadas en el nombre del modelo y la tabla. Los modelos permiten interactuar con los datos de la tabla utilizando un lenguaje de programación orientado a objetos y proporcionan herramientas integradas para trabajar con ellos. Además, permiten definir relaciones entre tablas y realizar consultas complejas con facilidad.
+ Los modelos en Laravel se relacionan con las tablas de la base de datos de forma automática utilizando convenciones basadas en el nombre del modelo y la tabla. Los modelos permiten interactuar con los datos de la tabla utilizando un lenguaje de programación orientado a objetos y proporcionan herramientas integradas para trabajar con ellos. Además, permiten definir relaciones entre tablas y realizar consultas complejas con facilidad.
 
 ## Cómo se definen los modelos en Laravel
 
@@ -124,7 +123,7 @@ De esta manera, Laravel utilizará la tabla `libros` en lugar de la tabla `books
 
 La propiedad `$table` también es útil si necesitas trabajar con una tabla que no sigue las convenciones de nombres de Laravel o si necesitas trabajar con múltiples conexiones de bases de datos.
 
-En resumen, la propiedad `$table` es una propiedad protegida de los modelos de Laravel que se utiliza para definir el nombre de la tabla correspondiente al modelo en particular.
+La propiedad `$table` es una propiedad protegida de los modelos de Laravel que se utiliza para definir el nombre de la tabla correspondiente al modelo en particular.
 
 ### Propiedad fillable
 
