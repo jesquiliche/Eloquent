@@ -32,7 +32,7 @@ DB::statement('CREATE VIEW v_clientes AS SELECT * FROM clientes WHERE activo = 1
 
 En este ejemplo, se utiliza `DB::statement` para ejecutar una consulta SQL que crea una vista llamada `v_clientes`. La vista se crea a partir de la tabla `clientes`, seleccionando solo las filas donde el campo `activo` es igual a 1.
 
-En resumen, `DB::statement` es una herramienta útil para ejecutar consultas SQL directamente en la base de datos, lo que permite realizar operaciones avanzadas que no están disponibles a través de la API de Eloquent.
+En conclusión, `DB::statement` es una herramienta útil para ejecutar consultas SQL directamente en la base de datos, lo que permite realizar operaciones avanzadas que no están disponibles a través de la API de Eloquent.
 :::
 
 ```php
@@ -128,7 +128,7 @@ La principal diferencia entre hacerlo con Eloquent y con una vista de base de da
 - Al no ser una vista en la base de datos, no se pueden utilizar las funciones específicas de cada motor de base de datos para optimizar el rendimiento de la vista. En cambio, todo el trabajo de filtrado y selección de datos se realiza en la aplicación utilizando Eloquent.
 - Sin embargo, Eloquent ofrece una gran cantidad de características que permiten personalizar la consulta de los datos, lo que puede resultar más flexible que trabajar con una vista de base de datos predefinida.
 
-En resumen, la elección entre utilizar una vista 
+En conclusión, la elección entre utilizar una vista 
 de base de datos o definir una función en Eloquent para 
 obtener los datos depende del caso de uso específico y de 
 las necesidades de la aplicación. Si se necesita una vista 

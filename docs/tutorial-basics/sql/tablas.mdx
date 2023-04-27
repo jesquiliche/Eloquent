@@ -14,7 +14,7 @@ Por otro lado, las tablas en Laravel son estructuras de datos en la base de dato
 
 Para crear una migración en Laravel, podemos utilizar el comando "php artisan make:migration" y proporcionar un nombre descriptivo para la migración. Dentro de la clase de migración generada, podemos utilizar métodos como "create" o "table" para definir la estructura de la tabla, incluyendo nombres de columnas, tipos de datos, restricciones y otros detalles. Luego, podemos ejecutar la migración utilizando el comando "php artisan migrate", que aplica todas las migraciones pendientes en la base de datos.
 
-En resumen, los modelos en Laravel son clases PHP que representan una tabla en la base de datos, mientras que las tablas son estructuras de datos en la base de datos que contienen información organizada en filas y columnas. Los modelos se definen en el directorio "app/Models" y se extienden de la clase base "Illuminate\Database\Eloquent\Model", mientras que las tablas se definen mediante migraciones, que son clases PHP que contienen instrucciones para crear o modificar tablas en la base de datos.
+Los modelos en Laravel son clases PHP que representan una tabla en la base de datos, mientras que las tablas son estructuras de datos en la base de datos que contienen información organizada en filas y columnas. Los modelos se definen en el directorio "app/Models" y se extienden de la clase base "Illuminate\Database\Eloquent\Model", mientras que las tablas se definen mediante migraciones, que son clases PHP que contienen instrucciones para crear o modificar tablas en la base de datos.
 
 ## ¿Cómo se define una tabla en SQL?
 
@@ -123,7 +123,7 @@ class CrearTablaEjemplo extends Migration
 
 Como se puede ver, la sintaxis de Eloquent es un poco diferente a la de SQL. En lugar de especificar explícitamente el tipo de dato, se utilizan métodos como `string` o `date` para indicar el tipo de columna. Además, Eloquent utiliza convenciones de nomenclatura para los nombres de las columnas, por lo que la columna de clave primaria se llama `id` en lugar de `id INT PRIMARY KEY`.
 
-En resumen, tanto SQL como Eloquent permiten definir la estructura de 
+En conclusión, tanto SQL como Eloquent permiten definir la estructura de 
 una tabla, pero la sintaxis y los métodos utilizados pueden variar 
 ligeramente entre los diferentes sistemas de bases de datos y 
 los ORMs. Es importante conocer las diferencias y similitudes para poder 
