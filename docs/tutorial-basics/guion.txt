@@ -1,4 +1,4 @@
-¡Claro! Aquí te presento un posible guion para comparar SQL y Eloquent para programadores SQL:
+
 
 1. Introducción
 

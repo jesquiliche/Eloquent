@@ -263,8 +263,6 @@ La relación uno a muchos polimórfica en Eloquent permite que un modelo tenga v
 
 :::tip Muchos a muchos polimórfica
 
-¡Claro! Aquí te dejo una explicación sobre la relación muchos a muchos polimórfica en Eloquent:
-
 En Eloquent, una relación muchos a muchos polimórfica te permite establecer una relación "muchos a muchos" entre varios modelos diferentes a través de una única tabla de relación polimórfica. Esto es útil cuando tienes varias entidades diferentes que pueden tener muchas instancias de otra entidad y deseas evitar la creación de múltiples tablas de relación.
 
 Para establecer una relación muchos a muchos polimórfica, debes utilizar los métodos `morphToMany()` y `morphedByMany()` en tus modelos. El método `morphToMany()` se utiliza en el modelo que puede tener muchas instancias de otra entidad, mientras que el método `morphedByMany()` se utiliza en el modelo que puede ser utilizado por muchas instancias de otros modelos.
