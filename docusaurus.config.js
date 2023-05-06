@@ -82,9 +82,9 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Jesús Quintana Esquiliche`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/vsDark'),
       },
+      
     }),
 };
 
