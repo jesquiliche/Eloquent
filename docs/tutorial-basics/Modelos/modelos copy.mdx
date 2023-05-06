@@ -18,7 +18,7 @@ Una vez que tengas tu modelo, puedes utilizar los métodos de Eloquent para real
 
 1. Crear un nuevo registro en la tabla:
 
-```
+```php
 $user = new User;
 $user->name = 'John Doe';
 $user->email = 'john@example.com';
@@ -27,7 +27,7 @@ $user->save();
 
 2. Leer los registros de la tabla:
 
-```
+```php
 // Obtener todos los registros
 $users = User::all();
 
@@ -37,7 +37,7 @@ $user = User::find(1);
 
 3. Actualizar un registro existente en la tabla:
 
-```
+```php
 $user = User::find(1);
 $user->name = 'Jane Doe';
 $user->save();
@@ -45,7 +45,7 @@ $user->save();
 
 4. Eliminar un registro existente en la tabla:
 
-```
+```php
 $user = User::find(1);
 $user->delete();
 ```
@@ -54,7 +54,7 @@ Además de estos métodos básicos, Eloquent proporciona otros métodos útiles 
 
 Por ejemplo, el método `create()` te permite crear un nuevo registro en la tabla y guardarlo en una sola línea de código:
 
-```
+```php
 $user = User::create([
     'name' => 'John Doe',
     'email' => 'john@example.com',
@@ -229,7 +229,7 @@ Para establecer una relación uno a muchos polimórfica, debes utilizar los mét
 
 Por ejemplo, supongamos que tienes un modelo `Comment` y varios modelos diferentes que pueden ser comentados, como `Post` y `Video`. Para establecer una relación uno a muchos polimórfica, puedes agregar el siguiente método `comments()` al modelo `Post` y al modelo `Video`:
 
-```
+```php
 public function comments()
 {
     return $this->morphMany('App\Models\Comment', 'commentable');
@@ -240,7 +240,7 @@ Este método indica que el modelo `Post` o `Video` puede tener muchos comentario
 
 A continuación, en el modelo `Comment`, debes agregar el siguiente método `commentable()` para establecer la relación inversa:
 
-```
+```php
 public function commentable()
 {
     return $this->morphTo();
@@ -251,7 +251,7 @@ Este método indica que el modelo `Comment` puede pertenecer a cualquier modelo 
 
 Ahora puedes acceder a los comentarios de un `Post` o un `Video` utilizando el método `comments()` y puedes acceder al modelo al que pertenece un comentario utilizando el método `commentable()`. Por ejemplo:
 
-```
+```php
 $post = Post::find(1);
 $comments = $post->comments; // Obtener todos los comentarios del post
 $comment = Comment::find(1);
@@ -269,7 +269,7 @@ Para establecer una relación muchos a muchos polimórfica, debes utilizar los m
 
 Por ejemplo, supongamos que tienes un modelo `Tag` y varios modelos diferentes que pueden tener muchas etiquetas, como `Post` y `Video`. Para establecer una relación muchos a muchos polimórfica, puedes agregar el siguiente método `tags()` al modelo `Post` y al modelo `Video`:
 
-```
+```php
 public function tags()
 {
     return $this->morphToMany('App\Models\Tag', 'taggable');
@@ -280,7 +280,7 @@ Este método indica que el modelo `Post` o `Video` puede tener muchas etiquetas 
 
 A continuación, en el modelo `Tag`, debes agregar el siguiente método `taggable()` para establecer la relación inversa:
 
-```
+```php
 public function taggable()
 {
     return $this->morphedByMany('App\Models\Post', 'taggable');
@@ -291,7 +291,7 @@ Este método indica que el modelo `Tag` puede pertenecer a cualquier modelo que 
 
 Ahora puedes acceder a las etiquetas de un `Post` o un `Video` utilizando el método `tags()` y puedes acceder a los modelos que tienen una etiqueta específica utilizando el método `taggable()`. Por ejemplo:
 
-```
+```php
 $post = Post::find(1);
 $tags = $post->tags; // Obtener todas las etiquetas del post
 $tag = Tag::find(1);

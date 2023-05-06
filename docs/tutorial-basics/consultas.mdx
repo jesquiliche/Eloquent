@@ -69,7 +69,7 @@ El método `all` de Eloquent es utilizado para obtener todos los registros de un
 
 El uso básico del método `all` es el siguiente:
 
-```
+```php
 $users = App\Models\User::all();
 ```
 
@@ -77,7 +77,7 @@ En este ejemplo, se obtienen todos los registros de la tabla `users` en la base 
 
 El método `all` también acepta una lista de columnas para seleccionar solamente aquellas columnas específicas de la tabla. Por ejemplo:
 
-```
+```php
 $users = App\Models\User::all(['id', 'name']);
 ```
 
@@ -210,14 +210,14 @@ El método `delete` de Eloquent se utiliza para eliminar un registro de la base 
 
 Por ejemplo, supongamos que tenemos un modelo `User` y queremos eliminar un usuario en particular con un ID de 1. Podemos hacerlo así:
 
-```
+```php
 $user = User::find(1);
 $user->delete();
 ```
 
 También se puede llamar al método `delete` directamente en una consulta, lo que eliminará todas las filas que satisfagan los criterios de la consulta.
 
-```
+```php
 User::where('active', false)->delete();
 ```
 
@@ -312,7 +312,7 @@ El método `groupBy` se utiliza para agrupar los resultados de la consulta por u
 
 Por ejemplo, si deseamos agrupar los registros de una tabla `users` por su país de origen, podríamos utilizar el método `groupBy` de la siguiente manera:
 
-```
+```php
 $usersByCountry = DB::table('users')
                     ->select('country', DB::raw('count(*) as total'))
                     ->groupBy('country')
@@ -376,7 +376,7 @@ El método `join()` devuelve una instancia de la clase `Illuminate\Database\Quer
 
 Aquí hay un ejemplo de cómo utilizar el método `join()` para unir dos tablas:
 
-```
+```php
 $users = DB::table('users')
             ->join('orders', 'users.id', '=', 'orders.user_id')
             ->select('users.*', 'orders.price')
@@ -403,7 +403,7 @@ El método `join()` devuelve una instancia de la clase `Illuminate\Database\Quer
 
 Aquí hay un ejemplo de cómo utilizar el método `join()` para unir dos tablas:
 
-```
+```php
 $users = DB::table('users')
             ->join('orders', 'users.id', '=', 'orders.user_id')
             ->select('users.*', 'orders.price')
@@ -419,7 +419,7 @@ El método `min` de Eloquent es utilizado para obtener el valor mínimo de una c
 
 Para utilizar este método, se debe encadenar al objeto de consulta el método `min` y pasarle como parámetro el nombre de la columna a la que se desea aplicar el método:
 
-```
+```php
 $minPrice = DB::table('products')->min('price');
 ```
 
@@ -427,7 +427,7 @@ En este ejemplo, se obtendrá el precio mínimo de todos los productos de la tab
 
 También se puede utilizar este método con el modelo Eloquent:
 
-```
+```php
 $minPrice = Product::min('price');
 ```
 
@@ -466,7 +466,7 @@ El método `pluck` en Eloquent se utiliza para obtener un array de valores de un
 
 La sintaxis básica del método `pluck` es la siguiente:
 
-```
+```php
 $users = DB::table('users')->pluck('name');
 ```
 
@@ -474,7 +474,7 @@ Esto recuperará todos los valores de la columna `name` de la tabla `users` y lo
 
 También puede especificar un segundo argumento para indicar el nombre de la columna que se utilizará como clave de la matriz resultante. Por ejemplo:
 
-```
+```php
 $users = DB::table('users')->pluck('name', 'id');
 ```
 
@@ -513,7 +513,7 @@ de la clave primaria del modelo.
 
 El método `select()` se utiliza para seleccionar columnas específicas de una tabla en una consulta. Toma una lista de columnas como argumento y devuelve una instancia del constructor de consultas Eloquent con la lista de columnas seleccionadas. Por ejemplo, para seleccionar las columnas 'name' y 'email' de la tabla 'users':
 
-```
+```php
 $users = DB::table('users')->select('name', 'email')->get();
 ```
 
@@ -551,7 +551,7 @@ El método `update` es utilizado para actualizar uno o varios registros en la ba
 
 El método acepta un arreglo de datos clave-valor que representan los campos y valores que se desean actualizar en la tabla correspondiente. Por ejemplo:
 
-```
+```php
 $affectedRows = DB::table('users')
               ->where('id', 1)
               ->update(['name' => 'John']);
@@ -639,7 +639,7 @@ Esto puede ser útil si se espera que el modelo exista y se desea manejar explí
 
 Por ejemplo, supongamos que tenemos una tabla `users` con un campo `email` que debe ser único. Podemos buscar un usuario por su dirección de correo electrónico utilizando el método `firstOrFail` de la siguiente manera:
 
-```
+```php
 $user = User::where('email', $email)->firstOrFail();
 ```
 
@@ -691,7 +691,7 @@ El método `whereIn` se utiliza para agregar una cláusula `WHERE IN` a la consu
 
 Por ejemplo, si queremos buscar todos los usuarios cuyo `id` sea 1, 2 o 3, podemos hacer lo siguiente:
 
-```
+```php
 $usuarios = DB::table('users')
                 ->whereIn('id', [1, 2, 3])
                 ->get();
@@ -805,7 +805,7 @@ SELECT * FROM users WHERE email IS NULL AND username IS NOT NULL;
 
 El método `whereNotNull` de Eloquent agrega una cláusula WHERE a la consulta para buscar los registros de la base de datos donde el valor de una columna específica no sea nulo. Por ejemplo, si queremos obtener todos los usuarios que tienen un correo electrónico en la base de datos, podemos hacer lo siguiente:
 
-```
+```php
 $usuarios = Usuario::whereNotNull('email')->get();
 ```
 
@@ -837,7 +837,7 @@ El método `whereMonth` se utiliza para agregar una cláusula `where` a una cons
 
 La sintaxis básica es la siguiente:
 
-```
+```php
 ->whereMonth('campo', $mes);
 ```
 
@@ -860,13 +860,13 @@ El método `whereDay` en Eloquent permite agregar una cláusula `where` a la con
 
 Por ejemplo, para obtener todos los registros de la tabla `pedidos` donde el día de la fecha de `created_at` sea igual a `23`, se puede usar el siguiente código:
 
-```
+```php
 $pedidos = Pedido::whereDay('created_at', '=', 23)->get();
 ```
 
 Este método también acepta un segundo parámetro opcional que permite especificar el operador de comparación. Por ejemplo, para obtener todos los registros de la tabla `pedidos` donde el día de la fecha de `created_at` sea mayor o igual a `23`, se puede usar el siguiente código:
 
-```
+```php
 $pedidos = Pedido::whereDay('created_at', '>=', 23)->get();
 ``` 
 
@@ -892,7 +892,7 @@ El método `whereHas` se utiliza para buscar modelos que tienen una relación co
 
 Aquí hay un ejemplo:
 
-```
+```php
 $posts = Post::whereHas('comments', function($query) {
     $query->where('status', 'approved');
 })->get();
@@ -907,13 +907,13 @@ El método `whereDoesntHave` se utiliza para agregar una cláusula WHERE a la co
 
 Por ejemplo, si tenemos una relación entre los modelos `User` y `Post` donde un usuario tiene muchos posts, podemos usar `whereDoesntHave` para buscar los usuarios que no tienen ningún post. La sintaxis básica del método es la siguiente:
 
-```
+```php
 $query->whereDoesntHave('relationshipName');
 ```
 
 Donde `relationshipName` es el nombre de la relación que se está buscando. También se puede proporcionar una función de cierre para agregar más condiciones a la consulta, por ejemplo:
 
-```
+```php
 $query->whereDoesntHave('posts', function ($query) {
     $query->where('status', 'published');
 });
